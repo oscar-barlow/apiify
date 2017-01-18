@@ -1,7 +1,5 @@
 class Apiify::Scaffolder
 
-  include Apiify
-
   def find_class(path)
     table = CSV.table(path)
     headers = table.headers
@@ -19,6 +17,10 @@ class Apiify::Scaffolder
     result
   end
 
+  def get_file_name(csv_path)
+    csv_path.split("/").last.split(".").first
+  end
+
   def hash_to_string(hash)
     output_str = ""
     hash.each do |key, value|
@@ -30,8 +32,7 @@ class Apiify::Scaffolder
   def create_scaffold(csv_path)
     model_name = get_file_name(csv_path).capitalize
     hash_result = find_class(csv_path)
-    exec("bin/rails g scaffold #{model_name} #{hash_to_string(hash_result)}")
-    exec("bin/rails db:migrate")
+    "bin/rails g scaffold #{model_name} #{hash_to_string(hash_result)}"
   end
 
 end

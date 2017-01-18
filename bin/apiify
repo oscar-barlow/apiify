@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require "apiify"
+
+Apiify::CLI.start( ARGV )

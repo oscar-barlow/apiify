@@ -3,11 +3,18 @@ require 'apiify/csv_converter'
 require 'apiify/scaffolder'
 require 'apiify/csv_importer'
 require 'CSV'
+require 'thor'
 
 module Apiify
 
-  def get_file_name(csv_path)
-    csv_path.split("/").last.split(".").first
-  end
-
+  # class Cli < Thor
+  #   include Thor::Actions
+  #
+  #   # desc "generate", "should build scaffold"
+  #   # def generate
+  #   #   scaffolder = Scaffolder.new
+  #   #   scaffolder.create_scaffold
+  #   # end
+  #
+  # end
 end
