@@ -1,11 +1,15 @@
 require "spec_helper"
+require 'apiify'
 
-describe Apiify do
-  it "has a version number" do
-    expect(Apiify::VERSION).not_to be nil
+
+describe Apiify::CsvConverter do
+  it "returns hello" do
+    expect(Apiify::CsvConverter.test()).to eq("Hello")
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "returns the filename of the csv file" do
+    csv_path = "fixtures/bunny.csv"
+    expect(Apiify::CsvConverter.get_file_name(csv_path)).to eq("bunny")
   end
+
 end
