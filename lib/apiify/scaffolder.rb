@@ -17,4 +17,12 @@ class Apiify::Scaffolder
     result
   end
 
+  def hash_to_string(hash)
+    output_str = ""
+    hash.each do |key, value|
+      output_str += "#{key}:#{value.to_s.downcase} "
+    end
+    output_str.strip
+  end
+
 end
