@@ -5,15 +5,4 @@ require 'CSV'
 require 'thor'
 
 module Apiify
-
-  # class Cli < Thor
-  #   include Thor::Actions
-  #
-  #   # desc "generate", "should build scaffold"
-  #   # def generate
-  #   #   scaffolder = Scaffolder.new
-  #   #   scaffolder.create_scaffold
-  #   # end
-  #
-  # end
 end
