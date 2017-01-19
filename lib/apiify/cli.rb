@@ -11,6 +11,7 @@ class Apiify::CLI < Thor
     # system("bin/rake db:migrate") - we ask the user to do this bit themselves
     puts "#{scaffolder.get_file_name(csv_path).capitalize} model with properties
       #{scaffolder.hash_to_string(find_class(csv_path))} created"
+    puts "Please run `bin/rake db:migrate`"
   end
 
   def import(csv_path)
