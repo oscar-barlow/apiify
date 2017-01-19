@@ -19,6 +19,4 @@ class Apiify::CsvImporter
     end
   end
 
-
-
 end

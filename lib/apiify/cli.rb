@@ -1,5 +1,6 @@
 require 'thor'
 require 'apiify'
+require 'csv'
 
 class Apiify::CLI < Thor
 
@@ -14,9 +15,20 @@ class Apiify::CLI < Thor
 
   desc "import", "extracts all rows from CSV and populates your database"
   def import(csv_path)
-    importer = Apiify::CsvImporter.new
-    importer.import_csv(csv_path)
-    puts "Import of #{csv_path} successful"
+    File.open("./lib/tasks/importer.rake", 'w') do |f|
+      f.write("require 'CSV'
+      task :import_csv, [:file_path] => :environment do |t, args|
+        file_name = args[:file_path].split('/').last.split('.').first
+        model_name = file_name.capitalize.constantize
+        table = CSV.table(args[:file_path])
+        table.each do |row|
+          model_name.create!(row.to_hash)
+        end
+      end")
+    end
+    system("bin/rake import_csv\[#{csv_path}\]")
+    rows = CSV.table("#{csv_path}").length
+    puts "#{rows} records imported successfully."
   end
 
 
