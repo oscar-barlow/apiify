@@ -1,5 +1,19 @@
 require "apiify/version"
+require 'apiify/scaffolder'
+require 'apiify/csv_importer'
+require 'CSV'
+require 'thor'
 
 module Apiify
-  # Your code goes here...
+
+  # class Cli < Thor
+  #   include Thor::Actions
+  #
+  #   # desc "generate", "should build scaffold"
+  #   # def generate
+  #   #   scaffolder = Scaffolder.new
+  #   #   scaffolder.create_scaffold
+  #   # end
+  #
+  # end
 end
