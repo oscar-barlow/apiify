@@ -5,7 +5,7 @@ class Apiify::Scaffolder
     run_scaffold(csv_path)
     confirm(csv_path)
   end
-  
+
   def get_file_name(csv_path)
     csv_path.split("/").last.split(".").first
   end
@@ -42,7 +42,7 @@ class Apiify::Scaffolder
   end
 
   def run_scaffold(csv_path)
-    system(scaffolder.create_scaffold(csv_path))
+    system(create_scaffold(csv_path))
   end
 
   def confirm(csv_path)
