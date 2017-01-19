@@ -32,6 +32,7 @@ class Apiify::Scaffolder
   def create_scaffold(csv_path)
     model_name = get_file_name(csv_path).capitalize
     hash_result = find_class(csv_path)
+    require 'pry'; binding.pry
     "bin/rails g scaffold #{model_name} #{hash_to_string(hash_result)}"
   end
 
