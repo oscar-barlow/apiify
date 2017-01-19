@@ -1,5 +1,4 @@
 require "apiify/version"
-require 'apiify/csv_converter'
 require 'apiify/scaffolder'
 require 'apiify/csv_importer'
 require 'CSV'
