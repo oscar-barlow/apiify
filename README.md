@@ -48,7 +48,7 @@ Then run `$ apiify import <path-to-csv>`. This will import each row in your CSV 
 
 Run `$ bin/rails s` to boot up your rails server. Visit `localhost:3000/<pluralised model name>` to see your data in lovely, lovely JSON format.
 
-Run `apiify help` to see a list of commands and get help with their usage.
+Run `apiify help [COMMAND]` to see a list of commands and get help with their usage.
 
 ## Contributing
 
