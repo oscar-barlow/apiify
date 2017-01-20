@@ -7,7 +7,7 @@ It's aimed at large organisations, e.g. government departments, that publish a l
 ## Requirements
 You will need to initialize a [Rails API-only application](http://edgeguides.rubyonrails.org/api_app.html) with a Postgres database, by running something like the following:
 
-    $ bin/rails new <my-api> -d=postgresql --api
+    $ rails new <my-api> -d=postgresql --api
 
 Then make your database with `$ bin/rake db:create`.
 
