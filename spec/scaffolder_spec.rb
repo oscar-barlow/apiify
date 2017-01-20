@@ -6,9 +6,15 @@ describe Apiify::Scaffolder do
   subject(:scaffolder) {described_class.new}
   let(:hash) {{:name => String, :colour => String, :weight_kgs => Float}}
   let(:csv_path) {"spec/fixtures/bunny.csv"}
+  let(:not_a_csv) {"spec/fixtures/hare.txt"}
 
   it "can get file name" do
     expect(subject.get_file_name("bunny.csv")).to eq "bunny"
+  end
+
+  it "throws an error if you give it anything except a csv" do
+    message = "Error: wrong file type. Please supply a .csv file"
+    expect{ subject.get_file_name(not_a_csv) }.to raise_error(RuntimeError, message)
   end
 
   it "can find the header type" do
