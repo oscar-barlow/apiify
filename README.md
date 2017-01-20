@@ -32,7 +32,7 @@ Locate the CSV file you want to turn into an API. The name of the CSV file will 
 **Good:**
 * bunny.csv
 
-In your Rails API project directory, run `$ apiify new <path-to-csv>`. This will run an API-appropriate scaffold via rails (i.e. a model, controller, and serializer will be created; so will a migration).
+In your Rails API project directory, run `$ apiify new <path-to-csv> [index]`. This will run an API-appropriate scaffold via rails (i.e. a model, controller, and serializer will be created; so will a migration). The optional [index] argument takes the name of a column header and indexes that column in the database.
 
 The model's properties will be derived from the CSV column headers, so ensure they are properly named. apiify auto-detects an appropriate property type based on the contents of each column.
 
