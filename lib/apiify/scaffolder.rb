@@ -1,9 +1,9 @@
 class Apiify::Scaffolder
 
-  def generate(csv_path, index_col = nil)
+  def generate(csv_path, index_col)
     # create_scaffold(csv_path, index_col)
     run_scaffold(csv_path, index_col)
-    confirm(csv_path)
+    confirm(csv_path, index_col)
   end
 
   def get_file_name(csv_path)
@@ -49,8 +49,8 @@ class Apiify::Scaffolder
     system(create_scaffold(csv_path, index_col))
   end
 
-  def confirm(csv_path)
-    puts "Created #{get_file_name(csv_path).capitalize} model with properties #{hash_to_string(find_class(csv_path))}"
+  def confirm(csv_path, index_col)
+    puts "Created #{get_file_name(csv_path).capitalize} model with properties #{hash_to_string(find_class(csv_path),index_col)}"
     puts "Please run `bin/rake db:migrate`"
   end
 

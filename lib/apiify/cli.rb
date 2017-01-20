@@ -1,13 +1,13 @@
 require 'thor'
 require 'apiify'
-require 'csv'
+# require 'csv'
 
 class Apiify::CLI < Thor
 
   desc "new", "extracts file name and creates a model and properties based on CSV file name and header columns"
-  def new(csv_path)
+  def new(csv_path, index_col = nil)
     scaffolder = Apiify::Scaffolder.new
-    scaffolder.generate(csv_path)
+    scaffolder.generate(csv_path, index_col)
   end
 
   desc "import", "extracts all rows from CSV and populates your database"
