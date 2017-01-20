@@ -50,6 +50,13 @@ Run `$ bin/rails s` to boot up your rails server. Visit `localhost:3000/<plurali
 
 Run `apiify help [COMMAND]` to see a list of commands and get help with their usage.
 
+## Features not supported
+This gem currently does not work with databases other than Postgresql.
+
+It currently does not support updating a database table based on a CSV input - it creates a new table each time the gem is used.
+
+Please take a look at the list of known issues before using the gem.
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/oscar-barlow/apiify.
