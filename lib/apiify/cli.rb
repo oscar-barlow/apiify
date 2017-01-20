@@ -3,10 +3,12 @@ require 'apiify'
 
 class Apiify::CLI < Thor
 
-  desc "new <path-to-your-csv>", "extracts file name and creates a model and properties based on CSV file name and header columns"
+  desc "new <path-to-your-csv> [index]", "extracts file name and creates a model and properties based on CSV file name and header columns"
   long_desc <<-APIIFYNEW
   This will run an API-appropriate scaffold via rails (i.e. a model,
   controller, and serializer will be created; so will a migration).
+
+  The optional [index] argument takes the name of a column header and indexes that column in the database.
 
   IMPORTANT: the name of the model is derived from the file name. Therefore,
   please ensure your file is sensibly named:
