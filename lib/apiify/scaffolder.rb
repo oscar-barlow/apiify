@@ -1,13 +1,16 @@
 class Apiify::Scaffolder
 
   def generate(csv_path, index_col)
-    # create_scaffold(csv_path, index_col)
     run_scaffold(csv_path, index_col)
     confirm(csv_path, index_col)
   end
 
   def get_file_name(csv_path)
-    csv_path.split("/").last.split(".").first
+    if is_a_csv?(csv_path)
+      get_file(csv_path).first
+    else
+      raise "Error: wrong file type. Please supply a .csv file"
+    end
   end
 
   def find_class(path)
@@ -54,5 +57,14 @@ class Apiify::Scaffolder
     puts "Please run `bin/rake db:migrate`"
   end
 
+  private
+
+  def is_a_csv?(csv_path)
+    get_file(csv_path).last == "csv"
+  end
+
+  def get_file(csv_path)
+    csv_path.split("/").last.split(".")
+  end
 
 end
