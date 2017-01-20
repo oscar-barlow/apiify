@@ -1,9 +1,9 @@
 class Apiify::Scaffolder
 
-  def generate(csv_path)
-    create_scaffold(csv_path)
-    run_scaffold(csv_path)
-    confirm(csv_path)
+  def generate(csv_path, index_col)
+    # create_scaffold(csv_path, index_col)
+    run_scaffold(csv_path, index_col)
+    confirm(csv_path, index_col)
   end
 
   def get_file_name(csv_path)
@@ -27,26 +27,30 @@ class Apiify::Scaffolder
     result
   end
 
-  def hash_to_string(hash)
+  def hash_to_string(hash, index_col)
     output_str = ""
     hash.each do |key, value|
-      output_str += "#{key}:#{value.to_s.downcase} "
+      if !index_col.nil? && key.to_s == index_col
+        output_str += "#{key}:#{value.to_s.downcase}:index "
+      else
+        output_str += "#{key}:#{value.to_s.downcase} "
+      end
     end
     output_str.strip
   end
 
-  def create_scaffold(csv_path)
+  def create_scaffold(csv_path, index_col)
     model_name = get_file_name(csv_path).capitalize
     hash_result = find_class(csv_path)
-    "bin/rails g scaffold #{model_name} #{hash_to_string(hash_result)}"
+    "bin/rails g scaffold #{model_name} #{hash_to_string(hash_result, index_col)}"
   end
 
-  def run_scaffold(csv_path)
-    system(create_scaffold(csv_path))
+  def run_scaffold(csv_path, index_col)
+    system(create_scaffold(csv_path, index_col))
   end
 
-  def confirm(csv_path)
-    puts "Created #{get_file_name(csv_path).capitalize} model with properties #{hash_to_string(find_class(csv_path))}"
+  def confirm(csv_path, index_col)
+    puts "Created #{get_file_name(csv_path).capitalize} model with properties #{hash_to_string(find_class(csv_path),index_col)}"
     puts "Please run `bin/rake db:migrate`"
   end
 
