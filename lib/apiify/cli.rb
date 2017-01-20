@@ -1,6 +1,5 @@
 require 'thor'
 require 'apiify'
-# require 'csv'
 
 class Apiify::CLI < Thor
 
