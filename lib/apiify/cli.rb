@@ -15,9 +15,9 @@ class Apiify::CLI < Thor
   Bad: `2017-list_of_bunnies-FINALv2.csv`
 
   APIIFYNEW
-  def new( csv_path )
+  def new(csv_path, index_col = nil)
     scaffolder = Apiify::Scaffolder.new
-    scaffolder.generate(csv_path)
+    scaffolder.generate(csv_path, index_col)
   end
 
   desc "import <path-to-your-csv>", "extracts all rows from CSV and populates your database"
