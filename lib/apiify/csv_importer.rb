@@ -1,7 +1,3 @@
-require 'active_support/inflector'
-require 'active_support'
-
-
 class Apiify::CsvImporter
 
   def import(csv_path)

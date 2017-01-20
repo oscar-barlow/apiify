@@ -17,11 +17,22 @@ describe Apiify::Scaffolder do
 
   it "converts the header and class hash to a string" do
     string = "name:string colour:string weight_kgs:float"
-    expect(subject.hash_to_string(hash)).to eq string
+    expect(subject.hash_to_string(hash,nil)).to eq string
   end
 
   it "creates command to create scaffold based on csv file" do
-    expect(subject.create_scaffold(csv_path)).to eq "bin/rails g scaffold Bunny name:string colour:string weight_kgs:float"
+    expect(subject.create_scaffold(csv_path, nil)).to eq "bin/rails g scaffold Bunny name:string colour:string weight_kgs:float"
+  end
+
+  context "index is provided" do
+    it "adds index to the require column" do
+      string = "name:string:index colour:string weight_kgs:float"
+      expect(subject.hash_to_string(hash, "name")).to eq string
+    end
+
+    it "creates command to create scaffold with index" do
+      expect(subject.create_scaffold(csv_path, "name")).to eq "bin/rails g scaffold Bunny name:string:index colour:string weight_kgs:float"
+    end
   end
 
 end
