@@ -6,11 +6,13 @@ require 'apiify/version'
 Gem::Specification.new do |spec|
   spec.name          = "apiify"
   spec.version       = Apiify::VERSION
-  spec.authors       = ["Oscar Barlow"]
+  spec.authors       = ["Chris Cooper", "Jenna Ramdenee", "Keomony Khun", "Oscar Barlow"]
   spec.email         = ["oscar.barlow@gmail.com"]
 
-  spec.summary       = %q{Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{Write a longer description or delete this line.}
+  spec.summary       = %q{takes a .csv file, churns out an API.}
+  spec.description   = %q{apiify is a little gem that takes any .csv file and turns it into an API.
+
+  It's aimed at large organisations, e.g. government departments, that publish a lot of data as .csv and who want a quick way to access this data as JSON in their digital services.}
   spec.homepage      = "https://github.com/oscar-barlow/apiify"
   spec.license       = "MIT"
 
